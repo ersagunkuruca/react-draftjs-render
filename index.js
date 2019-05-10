@@ -104,7 +104,7 @@ const Renderer = ({
     })
     indexes.sort((a, b) => a - b)
 
-    indexes = indexes.filter((v, i) => indexes.indexOf(v) === i)
+    indexes = indexes.filter((v, i) => indexes.indexOf(v) === i && v != block.text.length)
 
     let ranges = indexes
       .map((index, i) => ({
