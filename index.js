@@ -81,7 +81,7 @@ const Renderer = ({
         group.map(block =>
           React.createElement(
             parseBlockComponent(getBlockComponent(block.type))[0],
-            { key: block.key },
+            { key: block.key, data: block.data },
             block.children
               ? [renderRichText(block), ...renderArray(block.children)]
               : renderRichText(block)
@@ -104,7 +104,9 @@ const Renderer = ({
     })
     indexes.sort((a, b) => a - b)
 
-    indexes = indexes.filter((v, i) => indexes.indexOf(v) === i && v != block.text.length)
+    indexes = indexes.filter(
+      (v, i) => indexes.indexOf(v) === i && v != block.text.length
+    )
 
     let ranges = indexes
       .map((index, i) => ({
